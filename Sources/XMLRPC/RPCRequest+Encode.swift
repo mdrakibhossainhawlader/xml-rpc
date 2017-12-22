@@ -9,17 +9,14 @@
  */
 
 import XML
+import Stream
 
-public struct RPCResponse {
-    public let params: [RPCValue]
-
-    public init(params: [RPCValue]) {
-        self.params = params
-    }
-}
-
-extension RPCResponse: Equatable {
-    public static func ==(lhs: RPCResponse, rhs: RPCResponse) -> Bool {
-        return lhs.params == rhs.params
+extension RPCRequest {
+    public func encode<T: UnsafeStreamWriter>(
+        to stream: T,
+        prettify: Bool = false
+    ) throws {
+        let document = XML.Document(rpcRequest: self)
+        try document.encode(to: stream, prettify: prettify)
     }
 }
