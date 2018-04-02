@@ -19,10 +19,10 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/tris-foundation/xml.git",
-            .branch("master")),
+            .branch("4.1")),
         .package(
             url: "https://github.com/tris-foundation/test.git",
-            .branch("master"))
+            .branch("4.1"))
     ],
     targets: [
         .target(
